@@ -152,6 +152,9 @@ conversations = client.conversations
 # Get a specific conversation
 converstation = client.get_conversation("cnv_55c8c149")
 
+# Search conversations
+conversations = client.search_conversations("is:assigned before:1649974320")
+
 # Update a conversation
 client.update_conversation!("cnv_55c8c149", {
   assignee_id: "user@example.com",
