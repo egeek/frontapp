@@ -142,15 +142,15 @@ module Frontapp
         res << q.map do |k, v|
           case v
           when Symbol, String
-            "q[#{k}]=#{URI.encode_www_form_component_uri_component(v)}"
+            "q[#{k}]=#{CGI.escapeURIComponent_uri_component(v)}"
           when Array then
-            v.map { |c| "q[#{k}][]=#{URI.encode_www_form_component_uri_component(c.to_s)}" }.join("&")
+            v.map { |c| "q[#{k}][]=#{CGI.escapeURIComponent_uri_component(c.to_s)}" }.join("&")
           else
-            "q[#{k}]=#{URI.encode_www_form_component_uri_component(v.to_s)}"
+            "q[#{k}]=#{CGI.escapeURIComponent_uri_component(v.to_s)}"
           end
         end
       end
-      res << params.map {|k,v| "#{k}=#{URI.encode_www_form_component_uri_component(v.to_s)}"}
+      res << params.map {|k,v| "#{k}=#{CGI.escapeURIComponent_uri_component(v.to_s)}"}
       res.join("&")
     end
 
